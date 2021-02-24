@@ -36,6 +36,9 @@ header{
   height: 70px;
   border: 1px solid gray;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .todo{
   padding: 10px 20px;

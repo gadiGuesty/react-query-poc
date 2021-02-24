@@ -6,6 +6,7 @@ import Todos from './Todos';
 import Header from './Header';
 import Todo from './Todo';
 import SideBar from './SideBar';
+import CreateTodo from './CreateTodo';
 
 const clientCache = new QueryClient();
 
@@ -23,6 +24,9 @@ function App() {
                           <Switch>
                               <Route exact path="/">
                                   <Todos/>
+                              </Route>
+                              <Route  path="/new">
+                                  <CreateTodo/>
                               </Route>
                               <Route path="/:id">
                                   <Todo/>
