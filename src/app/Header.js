@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {useTodos} from '../hooks/useTodos';
 
 const Header = () => {
-    const {data} = useTodos({select: data => data?.length});
+    const {data} = useTodos({select: data => data?.length, refetchOnMount: false});
     return(
         <header>
           <h1>

@@ -4,7 +4,17 @@ const SideBar = () => {
     const qc = useQueryClient();
     const {refetch: filterTitle} = useQuery('todos', () => fetch('http://localhost:8080/posts?title=react').then(r => r.json()), {enabled: false, refetchOnWindowFocus:false});
     const {refetch: filterAuthor} = useQuery(['todos'], () => fetch('http://localhost:8080/posts?author=gal').then(r => r.json()), {enabled: false, refetchOnWindowFocus:false});
-    const {refetch: all} = useQuery('todos', () => fetch('http://localhost:8080/posts').then(r => r.json()), {enabled: false, refetchOnWindowFocus:false})
+    const {refetch: all} = useQuery('todos', () => {
+        const controller = new AbortController();
+        const signal = controller.signal
+
+        const promise = fetch('http://localhost:8080/posts', {
+            method:'GET',
+            signal
+        }).then(r => r.json());
+        promise.cancel = () => controller.abort();
+        return promise;
+    }, {enabled: false, refetchOnWindowFocus:false})
     return(
         <div style={{padding:10}}>
             <h2>Filter</h2>
