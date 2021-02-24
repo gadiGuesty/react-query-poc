@@ -1,3 +1,4 @@
+# NOTE: `yarn start:db` for mock local db
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
